@@ -121,7 +121,9 @@ def main() -> None:
 
         spenditure = df[['MntWines','MntFruits','MntMeatProducts','MntFishProducts', 'MntSweetProducts','MntGoldProds']]
 
-        chart_data = pd.DataFrame(df,columns=["MntWines", "MntFruits", "MeatProducts","MntFishProducts", "MntSweetProducts","MntGoldProds"])
+        chart_data = pd.DataFrame(
+            df,
+            columns=["MntWines", "MntFruits", "MeatProducts","MntFishProducts", "MntSweetProducts","MntGoldProds"])
         st.bar_chart(chart_data)
 
     elif choice == 'Customer Dashboard':
@@ -223,21 +225,13 @@ def main() -> None:
         income_range = list(df.Income.unique())
         income_filter = st.selectbox("Select the Income range", income_range)
         df = df[df["Income"] == income_filter]
-        fig_col7, fig_col8 = st.columns(2)
-        with fig_col7:
-            fig = px.histogram(
-                data_frame=df, x="total_accept", y=df.AOV, title="number of 
-            s accepted"
+        fig = px.histogram(
+                data_frame=df, x="total_accept", y=df.AOV, title="number of campains accepted"
             )   
-            st.write(fig)
-        with fig_col8:
-            fig = px.bar(df, x=df.Response, y=df.Tot_amnt_spent
+        st.write(fig)
+        fig = px.bar(df, x=df.Response, y=df.Tot_amnt_spent
             )
-            st.write(fig)
-
-
-
-
+        st.write(fig)
 
 
 
