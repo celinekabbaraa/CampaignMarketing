@@ -223,17 +223,17 @@ def main() -> None:
         income_range = list(df.Income.unique())
         income_filter = st.selectbox("Select the Income range", income_range)
         df = df[df["Income"] == income_filter]
-        chart1, chart2= st.columns(2)
-        with chart1:
-        fig = px.histogram(
+        fig_col7, fig_col8 = st.columns(2)
+        with fig_col7:
+            fig = px.histogram(
                 data_frame=df, x="total_accept", y=df.AOV, title="number of 
             s accepted"
             )   
-        st.write(fig)
-        with chart2:
+            st.write(fig)
+        with fig_col8:
             fig = px.bar(df, x=df.Response, y=df.Tot_amnt_spent
             )
-        st.write(fig)
+            st.write(fig)
 
 
 
